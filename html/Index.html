@@ -1,0 +1,101 @@
+ <!DOCTYPE html>
+ <html lang="fr">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gold calculator</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/GoldCalculator.js" defer></script>
+ </head>
+    <body>
+         <header>
+            <main>
+               <div id="coursOnze">
+                  <section id="coursAncienPrixOnze" class="bloc">
+
+                     <div id="blocTitre">
+                        <h1>Calculatrice de plus value sur pièces d'or</h1>
+                        <div id="blocCoursOz">
+                           <h2 id="introCoursOz">Cours actuel de l'or : </h2>
+                        </div>
+                     </div>
+
+                     
+                     <div>
+                        <form action="" method="get" id="colomne1">
+                           <fieldset>
+                              <legend id="piecesAchetes">Details des pièces achetées</legend>
+
+                              <div class="conteneur">
+                                 <div class="saisieValeur">
+                                    <input type="number" name="nbNapo" id="nbNapo" class="miseEnPage" min="0" max="9" step="1">
+                                    <label for="prixNapoleon">pièce(s) Napoleon achetée(s) au prix unitaire de </label>
+                                    <input type="number" id="prixNapoleon" class="miseEnPage" name="prixNapoleon">
+                                    <p>€</p>
+                                 </div>
+                              </div>
+
+                              <div class="conteneur">
+                                 <div class="saisieValeur">
+                                    <input type="number" name="nbCroix" id="nbCroix" class="miseEnPage" min="0" max="9" step="1">
+                                    <label for="prixCroixSuisse">pièce(s) Croix Suisse achetée(s) au prix unitaire de </label>
+                                    <input type="number" id="prixCroixSuisse" class="miseEnPage" name="prixCroixSuisse">
+                                    <p>€</p>
+                                 </div>
+                              </div>
+
+                              <div class="conteneur">
+                                 <div class="saisieValeur">
+                                    <input type="number" name="nbPesos" id="nbPesos" class="miseEnPage" min="0" max="9" step="1">
+                                    <label for="prixPesos">pièce(s) 50 Pesos achetée(s) au prix unitaire de </label>
+                                    <input type="number" id="prixPesos" class="miseEnPage" name="cours50Pesos">
+                                    <p>€</p>
+                                 </div>
+                              </div>
+
+                              <div class="conteneur">
+                                 <div class="saisieValeur">
+                                    <input type="number" name="nbKruge" id="nbKruge" class="miseEnPage" min="0" max="9" step="1">
+                                    <label for="prixKruge">pièce(s) Krugerrand achetée(s) au prix unitaire de </label>
+                                    <input type="number" id="prixKruge" class="miseEnPage" name="prixKruge">
+                                    <p>€</p>
+                                 </div>
+                              </div>
+
+                              <div class="conteneur">
+                                 <div class="saisieValeur">
+                                    <input type="number" name="nbGeorge" id="nbGeorge" class="miseEnPage" min="0" max="9" step="1">
+                                    <label for="prixGeorge">pièce(s) George V achetée(s) au prix unitaire de </label>
+                                    <input type="number" id="prixGeorge" class="miseEnPage" name="prixGeorge" placeholder="">
+                                    <p>€</p>
+                                 </div>
+                              </div>
+
+                              <div id="dateAchat">
+                                 <label for="date">Date d'achat des pièces</label>
+                                 <input type="date" id="date" class="miseEnPage" name="date" min="1990-01-01" max="2050-12-31"/>
+                              </div>
+                           </fieldset>
+                        </form>
+
+                        <form action="" method="get" id="colomne2">
+                           <fieldset id='contenusResults'>
+                              <legend id="resultats">Resultats</legend>
+                              <label id="conteneur" class="saisieValeur"></label>
+                           </fieldset>
+                        </form>
+                     </div>
+                  </section>
+
+                  <div id="blocBoutons">
+                     <button id="calcul">Calcul</button>
+                     <button id="reset">Reset</button>
+                  </div>
+                  
+               </div>
+            </main>
+         </header>
+         <footer>
+         </footer>
+    </body>
+ </html>
