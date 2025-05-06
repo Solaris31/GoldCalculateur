@@ -62,7 +62,9 @@ async function getGoldPrice() {
         // Affichage de la valeur du cours actuel de l'onze
         const blocCours=document.getElementById('blocCoursOz');
         const coursOz=document.createElement('span');
-        coursOz.textContent=` ${(coursOnze).toFixed(2)}€/Oz`;
+        coursOz.textContent=` ${(coursOnze).toFixed(2)}€/Oz `;
+        coursOz.style.background="rgb(224, 221, 162)";
+        coursOz.style.fontWeight='bolder';
         blocCours.appendChild(coursOz);
 
     } catch (error) {
