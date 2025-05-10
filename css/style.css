@@ -1,3 +1,9 @@
+:root{
+    --colorStyle  : rgb(224, 221, 162);
+    --borderStyle : 1px solid rgb(152, 152, 152);
+    --shadowStyle : inset 0px 0px 0px 0px rgb(134 129 129), inset -5px 5px 0px 0px #45493c;
+}
+
 *{
     padding: 0;
     margin: 0;
@@ -11,13 +17,13 @@ body{
 .bloc{
     margin: 0 auto;
     width: 80%;
-    border:3px;
+    /* border:3px; */
     color: black;
     border-radius: 50px;
     background-color: white;
     padding: 1.5% 2% 1.5%;
     box-shadow: 5px 5px 20px rgb(134 129 129);
-    border: 1px solid rgb(152, 152, 152);
+    border: var(--borderStyle);
 }
 
 #blocTitre{
@@ -41,7 +47,11 @@ h1{
     z-index: 1;
     top: 1em;
     border-radius:20px;
-    border: 1px solid rgb(152, 152, 152);
+    border: var(--borderStyle);
+}
+
+#title{
+    background: rgb(224, 221, 162);
 }
 
 div p{
@@ -128,13 +138,12 @@ div{
 #piecesAchetes{
     font-size: 1.4em;
     margin: 1em 0.5em 2.5em;
-    /* font-weight: 1000; */
     padding:50px 0 0;
 }
 
 fieldset{
     background-color:  rgb(228, 252, 253);
-    border: 1px solid grey;
+    border: var(--borderStyle);
     border-radius: 40px;
     height: 100%;
     padding: 0 1.2em 0;
@@ -214,8 +223,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     border-radius: 13px 13px;
     cursor: pointer;
     background-color: rgb(224, 221, 162);
-    border: 1px solid rgb(152, 152, 152);
-    box-shadow: 5px 5px 20px rgb(134 129 129);
+    border: var(--borderStyle);
+    box-shadow: inset 0px 0px 0px 0px rgb(134 129 129), inset -5px 5px 0px 0px #45493c;
 }
 
 #conteneur{

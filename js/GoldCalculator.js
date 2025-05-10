@@ -15,7 +15,7 @@ const nb50Pesos= document.getElementById('nbPesos');
 const nbKrugerran= document.getElementById('nbKruge');
 const nbGeorgeV= document.getElementById('nbGeorge');
 
-const boutonCalcul= document.getElementById('calcul');
+const btnCalcul= document.getElementById('calcul');
 const resultCalcul= document.getElementById('conteneur');
 const resultat= document.getElementById('total');
 const conteneurFieldset= document.getElementById('contenusResults');
@@ -23,7 +23,9 @@ const resultatFinal= document.getElementById('resultatFinal');
 const btnReset=document.getElementById('reset');
 
 // Valeurs temporaires de calcul
-let booleen=0;
+let controlSaisies=0;
+let btnCalculactivé=0;
+
 let diffAnnee=0;
 let diffMois=0;
 let tauxImpot=0;
@@ -71,33 +73,35 @@ async function getGoldPrice() {
         console.error('Erreur de connexion:', error);
     }
 }
+
 getGoldPrice();
 
 
-boutonCalcul.addEventListener('click', function() {
-    // verification quon a pas deja cliqué sue le bouton calcul sans avoir reseté
-    if(booleen!=0){
-        alert 
-        return(0);
-    }
-    else {
-        booleen++;
 
+btnCalcul.addEventListener('click', function() {
+
+    if(btnCalculactivé!=0){ // On sort de la boucle si le btn calcul a deja ete activé
+        return;
+    }
+
+    else { // Si le btn est activé pour la 1er fois sans reset, le test des saisies commence
 
         // Recuperation de la date du jour et date d'achat
         const dateActuelle= new Date();
         const dateAchat= new Date(document.getElementById('date').value);
 
-        // Controle d'input
-        if(nbNapoleon.value!==''   &&  prixNapo.value==='')   {alert('Veuillez saisir la valeur du Napoleon'); return (0);}
-        if(nbCroixSuisse.value!==''  &&  prixCroix.value==='')  {alert('Veuillez saisir la valeur de la Croix Suisse'); return (0);}
-        if(nb50Pesos.value!==''  &&  prixPesos.value==='')  {alert('Veuillez saisir la valeur de la 50 pesos'); return (0);}
-        if(nbKrugerran.value!==''  &&  prixKruge.value==='')  {alert('Veuillez saisir la valeur du Krugerrand'); return (0);}
-        if(nbGeorgeV.value!=='' &&  prixGeorge.value==='') {alert('Veuillez saisir la valeur de la Georges V'); return (0);}
+
+        // Controle des valeurs saisies
+        if(nbNapoleon.value!==''   &&  prixNapo.value==='')   {alert('Veuillez saisir la valeur du Napoleon'); return;}
+        if(nbCroixSuisse.value!==''  &&  prixCroix.value==='')  {alert('Veuillez saisir la valeur de la Croix Suisse'); return;}
+        if(nb50Pesos.value!==''  &&  prixPesos.value==='')  {alert('Veuillez saisir la valeur de la 50 pesos'); return;}
+        if(nbKrugerran.value!==''  &&  prixKruge.value==='')  {alert('Veuillez saisir la valeur du Krugerrand'); return;}
+        if(nbGeorgeV.value!=='' &&  prixGeorge.value==='') {alert('Veuillez saisir la valeur de la Georges V'); return;}
         if(nbNapoleon.value==='' && nbCroixSuisse.value==='' && nb50Pesos.value==='' && nbKrugerran.value==='' && nbGeorgeV.value==='') {
-            alert('Veuillez completer le formulaire'); return(0);
+            alert('Veuillez completer le formulaire'); return;
         }
-        if(dateAchat.value==='') {alert("Veuillez saisir la date d'achat de la (des) pièce(s) d'or" ); return (0);}
+        // Teste que la date soit remplie
+        if (isNaN(dateAchat)) {alert("Veuillez saisir la date d'achat de la (des) pièce(s) d'or" ); return;}
 
         else {
             // Mise a 0 des champs vides dans le formulaire
@@ -240,8 +244,10 @@ boutonCalcul.addEventListener('click', function() {
             benef.setAttribute('id','benef');
             derniereDiv.appendChild(benef);
 
+            btnCalculactivé=1;
 
-            btnReset.addEventListener('click', function () {
+
+            btnReset.addEventListener('click', function() {
                 // Suppression des valeurs du formulaire
                 nbNapoleon.value="";
                 nbCroixSuisse.value="";
@@ -254,7 +260,7 @@ boutonCalcul.addEventListener('click', function() {
                 prixKruge.value="";
                 prixGeorge.value="";
                 date.value="";
-                booleen=0;
+                controlSaisies=0;
 
                 // Suppression du tableau des resultats
                 if (document.getElementById('valeurPiecesAchetees')!=null)
@@ -277,6 +283,8 @@ boutonCalcul.addEventListener('click', function() {
 
                 if(document.getElementById('prixVente')!=null)
                     {document.getElementById('prixVente').remove();}
+
+                btnCalculactivé=0;
             });
         };
     }
